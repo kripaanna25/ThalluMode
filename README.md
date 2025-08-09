@@ -36,7 +36,7 @@ The Virtual Slap App lets you safely unleash your slapping urges by uploading an
 
 # Installation
 # Clone the repository
-git clone https://github.com/your-username/virtual-slap-app.git
+git clone https://github.com/Shreyaveena/ThalluMode
 
 # Go into the project folder
 cd virtual-slap-app
