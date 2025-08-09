@@ -54,21 +54,18 @@ code .
 
 
 # Screenshots (Add at least 3)
-![Screenshot1](<img width="1920" height="1020" alt="screenshot1" src="https://github.com/user-attachments/assets/9da8ece4-c24a-45f8-949e-71c26df5b3e5" />
-)
+![Screenshot1]("C:\Users\Kripa\OneDrive\Pictures\screenshot1.png")
 *User uploads their image here.*
 
-![Screenshot2](<img width="1920" height="1020" alt="screenshot2" src="https://github.com/user-attachments/assets/d85f0dbb-c9f5-4a10-beef-aca88bf64601" />
-)
+![Screenshot2]("C:\Users\Kripa\OneDrive\Pictures\screenshot2.png")
 *User uploads photos*
 
-![Screenshot3](![screenshot3](https://github.com/user-attachments/assets/bd918810-373b-4899-a961-334cf3fdb461)
+![Screenshot3]("C:\Users\Kripa\OneDrive\Pictures\screenshot3.jpg")
 )
 *Random funny messages after each slap.*
 
 # Diagrams
-![Workflow](<img width="2400" height="1200" alt="virtual_slap_workflow" src="https://github.com/user-attachments/assets/a3935007-0cd8-4441-af5c-e1e8e3a7b8db" />
-)
+![Workflow]("C:\Users\Kripa\OneDrive\Pictures\virtual_slap_workflow.png")
 *This diagram shows the flow from user uploading an image → triggering slap animation → playing sound → showing funny message.*
 
 
