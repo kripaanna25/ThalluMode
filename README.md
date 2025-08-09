@@ -61,7 +61,7 @@ code .
 *User uploads photos*
 
 ![Screenshot3]("C:\Users\Kripa\OneDrive\Pictures\screenshot3.jpg")
-)
+
 *Random funny messages after each slap.*
 
 # Diagrams
