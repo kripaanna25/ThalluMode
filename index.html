@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Virtual Slap</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: lightblue;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #e63946;
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+    }
+
+    .container{
+        margin-top: 50px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        background: MistyRose;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0,1);
+    }
+
+    #face-container {
+      position: relative;
+      width: 300px;
+      height: auto;
+    }
+
+    #face {
+      width: 100%;
+      border-radius: 12px;
+      display: none;
+      transition: transform 0.2s ease;
+    }
+
+    .shake {
+      animation: slapShake 0.5s ease-in-out;
+    }
+
+    @keyframes slapShake {
+      0% { transform: rotate(0deg) translateX(0); }
+      20% { transform: rotate(-3deg) translateX(-8px); }
+      40% { transform: rotate(3deg) translateX(8px); }
+      60% { transform: rotate(-2deg) translateX(-5px); }
+      80% { transform: rotate(2deg) translateX(5px); }
+      100% { transform: rotate(0deg) translateX(0); }
+    }
+
+    #slapBtn {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 18px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
+    }
+
+    #slapBtn:hover {
+      background-color: #e63b3b;
+    }
+
+    .reaction {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 28px;
+      font-weight: bold;
+      color: #d00000;
+      opacity: 0;
+      animation: popText 0.8s ease forwards;
+      pointer-events: none;
+      text-shadow: 2px 2px #fff;
+    }
+
+    @keyframes popText {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0) scale(0.5);
+      }
+      30% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-20px) scale(1.1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-60px) scale(0.9);
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+
+  <h1>👋 Thallu Mode</h1>
+  <p>Upload a face, then give it a realistic slap!</p>
+
+  <input type="file" id="uploadFace" accept="image/*">
+
+  <div id="face-container">
+    <img id="face" src="" alt="Face" />
+    <!-- Reaction text appears dynamically here -->
+  
+</div>
+  <button id="slapBtn">Slap!</button>
+
+  <audio id="slapSound" src="slap.mp3" preload="auto"></audio>
+</div>
+  <script>
+    const uploadFace = document.getElementById('uploadFace');
+    const face = document.getElementById('face');
+    const faceContainer = document.getElementById('face-container');
+    const slapBtn = document.getElementById('slapBtn');
+    const slapSound = document.getElementById('slapSound');
+
+    const reactions = [
+      "Ouch! 😵",
+      "Ayyo! 🤕",
+      "Aaa! 😫",
+      "Ithu njan alle! 😱",
+      "Deyy! 😤",
+      "Ninte kaiyo ithu? 😂"
+    ];
+
+    uploadFace.addEventListener('change', (e) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        face.src = event.target.result;
+        face.style.display = 'block';
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    });
+
+    slapBtn.addEventListener('click', () => {
+      if (!face.src) {
+        alert("Please upload a face image first!");
+        return;
+      }
+
+      // Shake animation
+      face.classList.remove('shake');
+      void face.offsetWidth;
+      face.classList.add('shake');
+
+      // Slap sound
+      slapSound.currentTime = 0;
+      slapSound.play();
+
+      // Reaction text
+      const text = document.createElement('div');
+      text.className = 'reaction';
+      text.textContent = reactions[Math.floor(Math.random() * reactions.length)];
+      faceContainer.appendChild(text);
+
+      // Remove after animation
+      setTimeout(() => {
+        faceContainer.removeChild(text);
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
